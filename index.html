@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arabic Gibberish Translator</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; padding: 20px; }
+        textarea { width: 80%; height: 100px; margin: 10px 0; }
+        button { padding: 10px 20px; font-size: 16px; cursor: pointer; }
+        #output { margin-top: 20px; font-size: 18px; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <h2>Arabic Gibberish Translator</h2>
+    <textarea id="inputText" placeholder="اكتب النص بالكيبورد الخطأ..."></textarea><br>
+    <button onclick="translateText()">ترجمة</button>
+    <div id="output"></div>
+
+    <script>
+        function translateText() {
+            const mapping = {
+                'a': 'ش', 'b': 'لا', 'c': 'ؤ', 'd': 'ي', 'e': 'ث', 'f': 'ب', 'g': 'ل', 'h': 'ا',
+                'i': 'ه', 'j': 'ت', 'k': 'ن', 'l': 'م', 'm': 'ة', 'n': 'ى', 'o': 'خ', 'p': 'ح',
+                'q': 'ض', 'r': 'ق', 's': 'س', 't': 'ف', 'u': 'ع', 'v': 'ر', 'w': 'ص', 'x': 'ء',
+                'y': 'غ', 'z': 'ئ', ',': 'و', ';': 'ك', "'": 'ط', '[': 'ج', ']': 'د', '`': 'ذ'
+            };
+
+            let input = document.getElementById("inputText").value;
+            let output = "";
+
+            for (let char of input) {
+                output += mapping[char] || char;
+            }
+
+            document.getElementById("output").innerText = output;
+        }
+    </script>
+</body>
+</html>
